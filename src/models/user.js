@@ -1,32 +1,31 @@
-'use strict'
+import { Model } from "sequelize";
 
-const{
-    Model,
-    DataTypes
-} = require('sequelize');
-const { sequelize } = require('.');
-
-module.exports = (sequelize, DataTypes) => {
-    class User extends Model{
-        static associate(models){
-        }
+export default (sequelize, DataTypes) => {
+  class User extends Model {
+    static associate(models) {
+      // Định nghĩa quan hệ ở đây
+      // Ví dụ: User.hasMany(models.Post);
     }
-    User.init(
+  }
+
+  User.init(
     {
-        email : DataTypes.STRING,
-        password : DataTypes.STRING,
-        firstName : DataTypes.STRING,
-        lastName : DataTypes.STRING,
-        address: DataTypes.STRING,
-        phoneNumber : DataTypes.STRING,
-        gender : DataTypes.BOOLEAN,
-        image : DataTypes.STRING,
-        roleId: DataTypes.STRING,
-        positionId : DataTypes.STRING
+      email: DataTypes.STRING,
+      password: DataTypes.STRING,
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
+      address: DataTypes.STRING,
+      phoneNumber: DataTypes.STRING,
+      gender: DataTypes.BOOLEAN,
+      image: DataTypes.STRING,
+      roleId: DataTypes.STRING,
+      positionId: DataTypes.STRING,
     },
     {
-        sequelize, modelName: 'User'
+      sequelize,
+      modelName: "User",
     }
-);
-return User;
-}
+  );
+
+  return User;
+};

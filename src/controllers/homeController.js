@@ -59,7 +59,7 @@ let deleteCRUD = async (req, res) => {
     }
 }
 
-module.exports = {
+export default  {
     getHomePage,
     getAboutPage,
     getCRUD,

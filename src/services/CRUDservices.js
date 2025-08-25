@@ -2,7 +2,8 @@ import bcrypt from "bcryptjs";
 import db from "../models/index.js";
 import {where} from "sequelize";
 import { Router } from "express";
-import { up } from "../migrations/20250822074013-create-user.js";
+// import migration from "../migrations/20250822074013-create-user.js";
+// const { up } = migration;
 const salt = bcrypt.genSaltSync(10);
 let createNewUser = async (data) => {
     return new Promise(async (resolve, reject) => {
@@ -103,10 +104,10 @@ let deleteUserById = (userId) => {
         }
     })
 }
-module.exports ={
-    createNewUser:createNewUser,
-    getAllUsers:getAllUsers,
-    getUserById:getUserById,
-    updateUserData:updateUserData,
-    deleteUserById:deleteUserById
+export default {
+    createNewUser,
+    getAllUsers,
+    getUserById,
+    updateUserData,
+    deleteUserById
 }

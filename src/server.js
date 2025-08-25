@@ -3,7 +3,8 @@ import bodyParser  from "body-parser";
 import viewEngine from "./config/viewEngine.js";
 import initWebRoutes from "./routes/web.js";
 import connectDB from "./config/configdb.js";
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 
 let app = express();
 
