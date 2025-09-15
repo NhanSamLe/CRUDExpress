@@ -47,14 +47,16 @@ let getEditCRUD = async (req, res) => {
 let putCRUD = async (req, res) => {
     let data = req.body;
     let data1 = await CRUDService.updateUserData(data);
-    return res.render('users/findAllUser.ejs', { datalist: data1 });
+    let users = await CRUDService.getAllUsers();
+    return res.render('users/findAllUser.ejs', { datalist: users });
 }
 let deleteCRUD = async (req, res) => {
     let userId = req.query.id;
     if(userId){
         await CRUDService.deleteUserById(userId);
-        return res.send('User deleted successfully');
-    }else{
+        let users = await CRUDService.getAllUsers();
+        return res.render('users/findAllUser.ejs', { datalist: users });
+    } else {
         return res.send('User not found');
     }
 }

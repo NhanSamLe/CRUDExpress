@@ -94,15 +94,16 @@ let updateUserData = (data) => {
     });
 }
 let deleteUserById = (userId) => {
-    return new Promise(async (resolve, reject)=> {
+    return new Promise(async (resolve, reject) => {
         try {
-            let user = await db.User.findOne({where:{id : userId}})
-        }
-        catch(e)
-        {
+            let deleted = await db.User.destroy({
+                where: { id: userId }
+            });
+            resolve(deleted); // trả về số row bị xóa (0 hoặc 1)
+        } catch (e) {
             reject(e);
         }
-    })
+    });
 }
 export default {
     createNewUser,
